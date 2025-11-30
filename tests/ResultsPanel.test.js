@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { ResultsPanel } from './ResultsPanel.js';
+import { ResultsPanel } from '../ResultsPanel.js';
 
 describe('ResultsPanel', () => {
   let container;

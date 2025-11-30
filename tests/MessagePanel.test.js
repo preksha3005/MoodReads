@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-import MessagePanel from './MessagePanel.js';
+import MessagePanel from '../MessagePanel.js';
 
 describe('MessagePanel', () => {
   let container;
