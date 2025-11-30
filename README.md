@@ -83,3 +83,17 @@ MoodReads/
 ├── TASK-4-IMPLEMENTATION.md
 └── TASK-12-COMPLETION-SUMMARY.md
 ```
+
+## How Kiro Helped
+
+Kiro SPEC played a central role in developing MoodReads.
+
+- Requirements were written using the EARS style in `requirements.md`.
+- The design document translated requirements into implementation details.
+- Tasks were automatically generated and executed in order.
+- Each SPEC produced safe, reviewable diffs.
+- Kiro accelerated UI generation, theme application, animations, and the recommendation logic.
+- Thanks to SPEC-driven development, the project structure remained consistent and modular.
+
+This workflow significantly reduced development time and ensured clean, repeatable implementation steps.
+
