@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodReads Test</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .mood-button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    .book-card { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>MoodReads Test</h1>
+  
+  <h2>Select a Mood:</h2>
+  <div id="mood-selector"></div>
+  
+  <h2>Message:</h2>
+  <div id="message-panel"></div>
+  
+  <h2>Recommendations:</h2>
+  <div id="results-panel"></div>
+  
+  <script type="module">
+    import { MoodSelector } from './MoodSelector.js';
+    import MessagePanel from './MessagePanel.js';
+    import { ResultsPanel } from './ResultsPanel.js';
+    import RecommendationEngine from './RecommendationEngine.js';
+    
+    const moodSelectorContainer = document.getElementById('mood-selector');
+    const messagePanelContainer = document.getElementById('message-panel');
+    const resultsPanelContainer = document.getElementById('results-panel');
+    
+    const messagePanel = new MessagePanel(messagePanelContainer);
+    const resultsPanel = new ResultsPanel(resultsPanelContainer);
+    const recommendationEngine = new RecommendationEngine();
+    
+    const moodSelector = new MoodSelector(moodSelectorContainer, (moodId) => {
+      console.log('Mood changed to:', moodId);
+      
+      messagePanel.showMessage(moodId);
+      
+      const recommendations = recommendationEngine.getRecommendations(moodId);
+      console.log('Recommendations:', recommendations);
+      
+      resultsPanel.displayBooks(recommendations);
+    });
+    
+    moodSelector.render();
+    
+    console.log('Test app initialized');
+  </script>
+</body>
+</html>

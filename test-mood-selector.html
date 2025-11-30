@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodSelector Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      padding: 2rem;
+    }
+    .test-section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    .test-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>MoodSelector Component Test</h1>
+  
+  <div class="test-section">
+    <h2>Test 1: Basic Rendering</h2>
+    <div id="test-mood-selector-1" class="mood-selector"></div>
+    <div class="test-output" id="output-1">Waiting for initialization...</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test 2: Easter Egg Unlock</h2>
+    <div id="logo" style="font-size: 2rem; text-align: center; padding: 1rem; cursor: pointer; user-select: none;">
+      📚✨ Click me 3 times quickly!
+    </div>
+    <div id="test-mood-selector-2" class="mood-selector"></div>
+    <div class="test-output" id="output-2">Triple-click the logo above to unlock easter egg...</div>
+  </div>
+
+  <script type="module">
+    import { MoodSelector } from './MoodSelector.js';
+    import { EasterEggUnlock } from './EasterEggUnlock.js';
+    import { getStandardMoods, getAllMoods } from './moodData.js';
+
+    // Test 1: Basic rendering
+    const container1 = document.getElementById('test-mood-selector-1');
+    const output1 = document.getElementById('output-1');
+    
+    const moodSelector1 = new MoodSelector(container1, (moodId) => {
+      output1.innerHTML = `✅ Mood changed to: <strong>${moodId}</strong>`;
+    });
+    
+    moodSelector1.render();
+    
+    const standardMoods = getStandardMoods();
+    output1.innerHTML = `✅ Rendered ${standardMoods.length} standard mood buttons. Click a mood to test selection.`;
+    
+    // Test 2: Easter egg unlock
+    const container2 = document.getElementById('test-mood-selector-2');
+    const output2 = document.getElementById('output-2');
+    const logoElement = document.getElementById('logo');
+    
+    const moodSelector2 = new MoodSelector(container2, (moodId) => {
+      output2.innerHTML += `<br>✅ Mood changed to: <strong>${moodId}</strong>`;
+    });
+    
+    moodSelector2.render();
+    
+    const easterEggUnlock = new EasterEggUnlock(logoElement, () => {
+      output2.innerHTML = '🎉 Easter egg unlocked! Chaotic Gremlin Mode is now visible!';
+      moodSelector2.unlockEasterEgg();
+      
+      const allMoods = getAllMoods();
+      output2.innerHTML += `<br>✅ Now showing ${allMoods.length} moods (including easter egg)`;
+    });
+    
+    console.log('Tests initialized');
+  </script>
+</body>
+</html>

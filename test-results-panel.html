@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResultsPanel Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      padding: 2rem;
+    }
+    .test-controls {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .test-button {
+      padding: 0.75rem 1.5rem;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .test-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>ResultsPanel Component Test</h1>
+  
+  <div class="test-controls">
+    <button class="test-button" id="show-dark">Show Dark Books</button>
+    <button class="test-button" id="show-cozy">Show Cozy Books</button>
+    <button class="test-button" id="show-many">Show Many Books</button>
+    <button class="test-button" id="clear-results">Clear Results</button>
+  </div>
+
+  <section class="results-section">
+    <div id="results-panel" class="results-panel"></div>
+  </section>
+
+  <script type="module">
+    import { ResultsPanel } from './ResultsPanel.js';
+    import { getBooksByMood } from './bookDatabase.js';
+
+    const container = document.getElementById('results-panel');
+    const resultsPanel = new ResultsPanel(container);
+
+    // Test buttons
+    document.getElementById('show-dark').addEventListener('click', () => {
+      const books = getBooksByMood('dark');
+      resultsPanel.displayBooks(books);
+    });
+
+    document.getElementById('show-cozy').addEventListener('click', () => {
+      const books = getBooksByMood('cozy');
+      resultsPanel.displayBooks(books);
+    });
+
+    document.getElementById('show-many').addEventListener('click', () => {
+      const darkBooks = getBooksByMood('dark');
+      const cozyBooks = getBooksByMood('cozy');
+      const allBooks = [...darkBooks, ...cozyBooks];
+      resultsPanel.displayBooks(allBooks);
+    });
+
+    document.getElementById('clear-results').addEventListener('click', () => {
+      resultsPanel.clear();
+    });
+
+    // Show initial books
+    const initialBooks = getBooksByMood('dark');
+    resultsPanel.displayBooks(initialBooks);
+  </script>
+</body>
+</html>

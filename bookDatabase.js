@@ -1,0 +1,186 @@
+/**
+ * Book Database
+ * 
+ * Curated collection of book recommendations organized by mood.
+ * Each book includes title, author, description, and associated moods.
+ */
+
+const bookDatabase = [
+  // Dark mood books
+  {
+    id: 'book-1',
+    title: 'The Night Circus',
+    author: 'Erin Morgenstern',
+    description: 'A magical competition between two young illusionists unfolds in a mysterious circus that appears without warning.',
+    moods: ['dark', 'cozy']
+  },
+  {
+    id: 'book-2',
+    title: 'Mexican Gothic',
+    author: 'Silvia Moreno-Garcia',
+    description: 'A socialite visits her cousin\'s mysterious mansion in the Mexican countryside, uncovering dark family secrets.',
+    moods: ['dark']
+  },
+  {
+    id: 'book-3',
+    title: 'The Silent Patient',
+    author: 'Alex Michaelides',
+    description: 'A woman shoots her husband and then never speaks another word. A psychotherapist becomes obsessed with uncovering her motive.',
+    moods: ['dark']
+  },
+  {
+    id: 'book-4',
+    title: 'House of Leaves',
+    author: 'Mark Z. Danielewski',
+    description: 'A family discovers their house is bigger on the inside than the outside, leading to a labyrinthine nightmare.',
+    moods: ['dark']
+  },
+
+  // Cozy mood books
+  {
+    id: 'book-5',
+    title: 'The House in the Cerulean Sea',
+    author: 'TJ Klune',
+    description: 'A caseworker visits an orphanage for magical children and discovers the true meaning of family.',
+    moods: ['cozy', 'motivational']
+  },
+  {
+    id: 'book-6',
+    title: 'Legends & Lattes',
+    author: 'Travis Baldree',
+    description: 'An orc barbarian retires from adventuring to open a coffee shop in a fantasy world.',
+    moods: ['cozy']
+  },
+  {
+    id: 'book-7',
+    title: 'A Psalm for the Wild-Built',
+    author: 'Becky Chambers',
+    description: 'A tea monk meets a robot in a world where nature has reclaimed half the planet.',
+    moods: ['cozy']
+  },
+  {
+    id: 'book-8',
+    title: 'The Midnight Library',
+    author: 'Matt Haig',
+    description: 'Between life and death, a library contains infinite books, each one a different version of your life.',
+    moods: ['cozy', 'heartbreaking']
+  },
+
+  // Heartbreaking mood books
+  {
+    id: 'book-9',
+    title: 'A Little Life',
+    author: 'Hanya Yanagihara',
+    description: 'Four college friends navigate decades of ambition, addiction, and trauma in New York City.',
+    moods: ['heartbreaking']
+  },
+  {
+    id: 'book-10',
+    title: 'The Song of Achilles',
+    author: 'Madeline Miller',
+    description: 'The love story between Achilles and Patroclus, from their boyhood to the Trojan War.',
+    moods: ['heartbreaking']
+  },
+  {
+    id: 'book-11',
+    title: 'They Both Die at the End',
+    author: 'Adam Silvera',
+    description: 'Two strangers receive a call that they will die today, and decide to spend their last day together.',
+    moods: ['heartbreaking']
+  },
+  {
+    id: 'book-12',
+    title: 'The Kite Runner',
+    author: 'Khaled Hosseini',
+    description: 'A story of friendship, betrayal, and redemption set against the backdrop of Afghanistan\'s tumultuous history.',
+    moods: ['heartbreaking']
+  },
+
+  // Motivational mood books
+  {
+    id: 'book-13',
+    title: 'Atomic Habits',
+    author: 'James Clear',
+    description: 'Practical strategies for building good habits and breaking bad ones through tiny changes.',
+    moods: ['motivational']
+  },
+  {
+    id: 'book-14',
+    title: 'The Alchemist',
+    author: 'Paulo Coelho',
+    description: 'A shepherd boy journeys to Egypt in search of treasure, discovering his personal legend along the way.',
+    moods: ['motivational']
+  },
+  {
+    id: 'book-15',
+    title: 'Educated',
+    author: 'Tara Westover',
+    description: 'A memoir of a woman who grows up in a survivalist family and eventually earns a PhD from Cambridge.',
+    moods: ['motivational', 'heartbreaking']
+  },
+  {
+    id: 'book-16',
+    title: 'The Power of Now',
+    author: 'Eckhart Tolle',
+    description: 'A guide to spiritual enlightenment through living in the present moment.',
+    moods: ['motivational']
+  },
+
+  // Chaotic Gremlin Mode books (absurd and unconventional)
+  {
+    id: 'book-17',
+    title: 'John Dies at the End',
+    author: 'David Wong',
+    description: 'Two slackers accidentally ingest a drug that gives them supernatural abilities and attracts interdimensional horrors.',
+    moods: ['chaotic']
+  },
+  {
+    id: 'book-18',
+    title: 'The Hitchhiker\'s Guide to the Galaxy',
+    author: 'Douglas Adams',
+    description: 'Earth is demolished to make way for a hyperspace bypass. A human and his alien friend hitchhike through space.',
+    moods: ['chaotic']
+  },
+  {
+    id: 'book-19',
+    title: 'Gideon the Ninth',
+    author: 'Tamsyn Muir',
+    description: 'Lesbian necromancers in space solve a locked-room murder mystery in a decaying gothic palace.',
+    moods: ['chaotic', 'dark']
+  },
+  {
+    id: 'book-20',
+    title: 'House of Leaves',
+    author: 'Mark Z. Danielewski',
+    description: 'A book about a book about a film about a house that\'s bigger on the inside. The footnotes have footnotes.',
+    moods: ['chaotic', 'dark']
+  }
+];
+
+/**
+ * Get all books from the database
+ * @returns {Array} Array of all book objects
+ */
+export function getAllBooks() {
+  return bookDatabase;
+}
+
+/**
+ * Get books filtered by mood
+ * @param {string} moodId - The mood identifier
+ * @returns {Array} Array of book objects matching the mood
+ */
+export function getBooksByMood(moodId) {
+  return bookDatabase.filter(book => book.moods.includes(moodId));
+}
+
+/**
+ * Get a specific book by id
+ * @param {string} bookId - The book identifier
+ * @returns {Object|undefined} Book object or undefined if not found
+ */
+export function getBookById(bookId) {
+  return bookDatabase.find(book => book.id === bookId);
+}
+
+export default bookDatabase;

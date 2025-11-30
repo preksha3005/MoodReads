@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodReads Debug Test</title>
+</head>
+<body>
+  <h1>Debug Test</h1>
+  <div id="output"></div>
+  
+  <script type="module">
+    import { getBooksByMood } from './bookDatabase.js';
+    import RecommendationEngine from './RecommendationEngine.js';
+    
+    const output = document.getElementById('output');
+    
+    // Test 1: Check if bookDatabase works
+    output.innerHTML += '<h2>Test 1: Get books for "dark" mood</h2>';
+    const darkBooks = getBooksByMood('dark');
+    output.innerHTML += `<p>Found ${darkBooks.length} books</p>`;
+    output.innerHTML += `<pre>${JSON.stringify(darkBooks, null, 2)}</pre>`;
+    
+    // Test 2: Check RecommendationEngine
+    output.innerHTML += '<h2>Test 2: RecommendationEngine</h2>';
+    const engine = new RecommendationEngine();
+    const recommendations = engine.getRecommendations('cozy');
+    output.innerHTML += `<p>Found ${recommendations.length} recommendations</p>`;
+    output.innerHTML += `<pre>${JSON.stringify(recommendations, null, 2)}</pre>`;
+  </script>
+</body>
+</html>

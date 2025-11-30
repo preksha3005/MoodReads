@@ -1,0 +1,23 @@
+{
+  "name": "moodreads",
+  "version": "1.0.0",
+  "description": "Mood-based book recommendation web application",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "build:css": "cleancss -o dist/styles.min.css styles.css",
+    "build:js:app": "terser app.js --compress --mangle --module -o dist/app.min.js",
+    "build:js:modules": "terser MoodSelector.js --compress --mangle --module -o dist/MoodSelector.min.js && terser ThemeManager.js --compress --mangle --module -o dist/ThemeManager.min.js && terser MessagePanel.js --compress --mangle --module -o dist/MessagePanel.min.js && terser ResultsPanel.js --compress --mangle --module -o dist/ResultsPanel.min.js && terser RecommendationEngine.js --compress --mangle --module -o dist/RecommendationEngine.min.js && terser bookDatabase.js --compress --mangle --module -o dist/bookDatabase.min.js && terser moodData.js --compress --mangle --module -o dist/moodData.min.js && terser EasterEggUnlock.js --compress --mangle --module -o dist/EasterEggUnlock.min.js",
+    "build:js": "npm run build:js:app && npm run build:js:modules",
+    "prebuild": "node -e \"require('fs').mkdirSync('dist', { recursive: true })\"",
+    "build": "npm run build:css && npm run build:js",
+    "serve": "npx http-server -p 8000 -c-1"
+  },
+  "devDependencies": {
+    "vitest": "^1.0.0",
+    "jsdom": "^23.0.0",
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.27.0"
+  }
+}

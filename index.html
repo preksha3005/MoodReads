@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>MoodReads - Mood-Based Book Recommendations</title>
+  <meta name="title" content="MoodReads - Mood-Based Book Recommendations">
+  <meta name="description" content="Discover books that match your current emotional state. MoodReads provides personalized book recommendations based on your mood with beautiful themes and animations.">
+  <meta name="keywords" content="books, recommendations, mood, reading, emotional intelligence, book finder, mood-based reading">
+  <meta name="author" content="MoodReads">
+  <meta name="theme-color" content="#8b7fb8">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moodreads.app/">
+  <meta property="og:title" content="MoodReads - Mood-Based Book Recommendations">
+  <meta property="og:description" content="Find the perfect book for your current mood with our emotionally intelligent recommendation system. Beautiful themes, premium animations, and curated selections.">
+  <meta property="og:image" content="https://moodreads.app/og-image.png">
+  <meta property="og:image:alt" content="MoodReads - Book and sparkle logo">
+  <meta property="og:site_name" content="MoodReads">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://moodreads.app/">
+  <meta property="twitter:title" content="MoodReads - Mood-Based Book Recommendations">
+  <meta property="twitter:description" content="Find the perfect book for your current mood with our emotionally intelligent recommendation system.">
+  <meta property="twitter:image" content="https://moodreads.app/og-image.png">
+  
+  <!-- Additional SEO -->
+  <link rel="canonical" href="https://moodreads.app/">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip to main content link for keyboard navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header class="header" role="banner">
+    <div class="header-banner">
+      <h1 class="logo" id="logo" tabindex="0">
+        📚✨ MoodReads
+      </h1>
+    </div>
+  </header>
+
+  <main class="main-content" id="main-content" role="main">
+    <section class="mood-selector-section" aria-labelledby="mood-selector-title">
+      <h2 class="section-title" id="mood-selector-title">How are you feeling?</h2>
+      <div id="mood-selector" class="mood-selector" role="group" aria-label="Mood selection buttons"></div>
+    </section>
+
+    <section class="message-panel-section" aria-live="polite" aria-atomic="true">
+      <div id="message-panel" class="message-panel" role="status"></div>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-title">
+      <h2 class="visually-hidden" id="results-title">Book Recommendations</h2>
+      <div id="results-panel" class="results-panel" role="region" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>&copy; 2024 MoodReads. Find your next read based on your mood.</p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
